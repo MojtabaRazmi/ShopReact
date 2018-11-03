@@ -19,6 +19,7 @@ class Counters extends Component {
          }
          this.handleIncrement=this.handleIncrement.bind(this)
          this.handleDelete = this.handleDelete.bind(this)
+         this.handleDecrement =this.handleDecrement.bind(this)
     }
 
     handleIncrement(entryCounter){
@@ -34,6 +35,14 @@ class Counters extends Component {
         this.setState({counters});
     }
 
+    handleDecrement(entryCounter){
+        const counters = [...this.state.counters];
+        const myIndex = counters.indexOf(entryCounter);
+        counters[myIndex]={...entryCounter};
+        counters[myIndex].value--;
+        this.setState({counters});
+    }
+
     render() { 
         return ( 
             <Container>
@@ -44,6 +53,7 @@ class Counters extends Component {
                                 counter={counter}
                                 onIncrement={this.handleIncrement}
                                 onDelete={this.handleDelete}
+                                onDecrement={this.handleDecrement}
                             />
                         )}
                 </div>

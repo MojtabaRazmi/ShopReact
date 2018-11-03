@@ -20,6 +20,13 @@ class Counter extends Component {
                     حذف    
                 </Button>
                 <Button 
+                    color="warning"
+                    className="btn-sm m-2"
+                    onClick={() => this.props.onDecrement(this.props.counter)}
+                >
+                    کاهش
+                </Button>
+                <Button 
                     color="primary"
                     className="btn-sm"
                     onClick={() => this.props.onIncrement(this.props.counter)}
@@ -37,3 +44,4 @@ class Counter extends Component {
 }
  
 export default Counter;
+
