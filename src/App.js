@@ -9,15 +9,7 @@ import Counters from './components/counters'
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = { 
-        counters : [
-            {id: 1,value: 0},
-            {id: 2,value: 0},
-            {id: 3,value: 0},
-            {id: 4,value: 0},
-            {id: 5,value: 0}
-        ]
-     }
+
      this.handleIncrement=this.handleIncrement.bind(this)
      this.handleDelete = this.handleDelete.bind(this)
      this.handleDecrement =this.handleDecrement.bind(this)
