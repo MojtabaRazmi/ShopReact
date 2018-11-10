@@ -1,13 +1,13 @@
-const incrementCounter=(counter)=>({
+export const incrementCounter=(counter)=>({
     type : 'INCREMENT_COUNTER',
     counter
 })
 
-const deleteCounter =(counterID)=>({
+export const deleteCounter =(counterID)=>({
     type:'DELETE_COUNTER',
     counterID
 })
 
-const resetCounter =()=>({
+export const resetCounter =()=>({
     type : 'RESET_COUNTER'
 })
