@@ -16,35 +16,6 @@ class App extends Component {
      this.handleReset =this.handleReset.bind(this);
   }
 
-  handleIncrement(entryCounter){
-      const counters = [...this.state.counters];
-      const index = counters.indexOf(entryCounter);
-      counters[index] = {...entryCounter};
-      counters[index].value++;
-      this.setState({counters});
-  }
-
-  handleDelete(counterId){
-      const counters = this.state.counters.filter(c => c.id !== counterId);
-      this.setState({counters});
-  }
-
-  handleDecrement(entryCounter){
-      const counters = [...this.state.counters];
-      const myIndex = counters.indexOf(entryCounter);
-      counters[myIndex]={...entryCounter};
-      counters[myIndex].value--;
-      this.setState({counters});
-  }
-
-  handleReset(){
-     const counters = this.state.counters.map((c)=>{
-       c.value = 0;
-       return c;
-     })
-     this.setState({counters})
-  }
-
   render() {
     return (
       <React.Fragment>
