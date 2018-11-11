@@ -1,6 +1,11 @@
-export const incrementCounter=(counter)=>({
+export const incrementCounter=(entryCounter)=>({
     type : 'INCREMENT_COUNTER',
-    counter
+    entryCounter
+})
+
+export const decrementCounter =(entryCounter)=>({
+    type : 'DECREMENT_COUNTER',
+    entryCounter
 })
 
 export const deleteCounter =(counterID)=>({

@@ -4,6 +4,7 @@ Navbar,
 NavbarBrand,
 Badge
 } from 'reactstrap'
+import { connect } from 'react-redux';
 
 const NavBar = ({totalCounters}) => {
     return ( 
@@ -18,4 +19,8 @@ const NavBar = ({totalCounters}) => {
     );
 }
  
-export default NavBar;
+export default connect(state=>{
+    return{
+        totalCounters :state.filter(c=>c.value >0).length
+    }
+})(NavBar); 

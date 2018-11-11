@@ -1,43 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import{
     Badge,
     Button,
 } from 'reactstrap'
+import {connect} from 'react-redux';
+import {decrementCounter , incrementCounter , deleteCounter} from '../actions/index';
 
+const Counter = ({dispatch , counter}) => {
+    return ( 
+        <div>
+            <Badge color={badgeColor(counter)} className="m-2">
+                {formatCount(counter)}
+            </Badge>
+            <Button
+                outline color="danger"
+                className="btn-sm m-2"
+                onClick={() => dispatch(deleteCounter(counter.id))}
+            >
+                حذف    
+            </Button>
+            <Button 
+                outline color="warning"
+                className="btn-sm m-2"
+                onClick={() => dispatch(decrementCounter(counter))}
+            >
+                کاهش
+            </Button>
+            <Button 
+                outline color="info"
+                className="btn-sm"
+                onClick={() => dispatch(incrementCounter(counter))}
+            >
+                افزایش
+            </Button>
+        </div>
+    );
+}
 
-class Counter extends Component {
-    render() { 
-        return ( 
-            <div>
-                <Badge color={this.badgeColor()} className="m-2">
-                    {this.formatCount()}
-                </Badge>
-                <Button
-                    outline color="danger"
-                    className="btn-sm m-2"
-                    onClick={() => this.props.onDelete(this.props.counter.id)}
-                >
-                    حذف    
-                </Button>
-                <Button 
-                    outline color="warning"
-                    className="btn-sm m-2"
-                    onClick={() => this.props.onDecrement(this.props.counter)}
-                >
-                    کاهش
-                </Button>
-                <Button 
-                    outline color="info"
-                    className="btn-sm"
-                    onClick={() => this.props.onIncrement(this.props.counter)}
-                >
-                    افزایش
-                </Button>
-            </div>
-         )
-    }
-    badgeColor(){
-        const {value} = this.props.counter;
+    const badgeColor=(counter)=>{
+        const {value} = counter;
         if(value > 0){
             return 'success'
         }
@@ -46,12 +47,15 @@ class Counter extends Component {
         }
         return 'danger'
     }
-    formatCount(){
-        const {value} = this.props.counter;
+    const formatCount=(counter)=>{
+        const {value} = counter;
         //const value = this.props.counter.value
         return value ===0 ? 'صفر' : value
     }
-}
- 
-export default Counter;
+
+export default connect(state=>{
+    return{
+        state
+    }
+})(Counter);
 

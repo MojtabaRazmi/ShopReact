@@ -1,33 +1,32 @@
 export default (state=[], action)=>{
     switch(action.type){
         case 'INCREMENT_COUNTER':
-            const counters = [...state.counters];
-            const index = counters.indexOf(action.entryCounter);
-            counters[index] = {...action.entryCounter};
-            counters[index].value++;
-            this.setState({counters});
-            break;
+            const iCounters = [...state];
+            const index = iCounters.indexOf(action.entryCounter);
+            iCounters[index] = {...action.entryCounter};
+            iCounters[index].value++;
+            return [...iCounters];
+            
 
         case 'DELETE_COUNTER':
-            const counters = state.counters.filter(c => c.id !== action.counterId);
-            this.setState({counters});
-            break;
+            const filtredCounters = state.filter(c => c.id !== action.counterID);
+            return [...filtredCounters];
+        
         
         case 'DECREMENT_COUNTER' :
-            const counters = [...state.counters];
-            const myIndex = counters.indexOf(action.entryCounter);
-            counters[myIndex]={...action.entryCounter};
-            counters[myIndex].value--;
-            this.setState({counters});
-            break;
+            const dCounters = [...state];
+            const myIndex = dCounters.indexOf(action.entryCounter);console.log(dCounters)
+            dCounters[myIndex]={...action.entryCounter};
+            dCounters[myIndex].value--;
+            return[...dCounters]
+            
             
         case 'RESET_COUNTER' :
-            const counters = state.counters.map((c)=>{
+            const resetCounters = state.map((c)=>{
                 c.value = 0;
                 return c;
             })
-            this.setState({counters})
-            break;
+            return [...resetCounters]
             
         default:
             return state;
